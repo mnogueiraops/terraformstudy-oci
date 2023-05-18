@@ -4,6 +4,13 @@ variable "compartment_id" {
   
 }
 
+variable "availability_domain" { 
+type = string
+description = "The availability domain of the DBsystem"
+default = "WRCw:SA-VINHEDO-1-AD-1"
+
+}
+
 variable "mysql_shape_name" {
   type        = string
   description = "Shape name of the MySQL DB System"
@@ -46,7 +53,7 @@ default = "terraform-db-test"
 variable "mysql_db_system_data_storage_size_in_gb" {
 type = string
 description = "The DBś storage size"
-default = "80GB"
+default = "80"
 
 }
 
