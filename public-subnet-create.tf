@@ -5,7 +5,7 @@ resource "oci_core_subnet" "vcn-public-subnet"{
   # Required
   compartment_id = "ocid1.compartment.oc1..aaaaaaaaeji7lmv6yrejwphcmajsuq5vabnrwpf474nctns5wu3pgsgyxukq"
   vcn_id = module.vcn.vcn_id
-  cidr_block = "10.3.2.0/24"
+  cidr_block = "10.4.1.0/24"
  
   # Optional
   route_table_id = module.vcn.ig_route_id
