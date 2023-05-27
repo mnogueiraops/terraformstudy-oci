@@ -43,4 +43,11 @@ egress_security_rules {
           max = 25565 
           }
       }
+      ingress_security_rules { 
+      stateless = false
+      source = "0.0.0.0/0"
+      source_type = "CIDR_BLOCK"
+      # Get protocol numbers from https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml TCP is 6
+      protocol = "1"
+      }
       }
