@@ -1,4 +1,4 @@
-resource "oci_core_instance" "ubuntu_instance" {
+resource "oci_core_instance" "orlinux_instance" {
     # Required
     availability_domain = var.availability_domain
     compartment_id = var.compartment_id
@@ -17,7 +17,7 @@ resource "oci_core_instance" "ubuntu_instance" {
     }
 
     # Optional
-    display_name = "minecraft>"
+    display_name = "minecraft"
     create_vnic_details {
         assign_public_ip = true
         subnet_id = oci_core_subnet.vcn-public-subnet.id
