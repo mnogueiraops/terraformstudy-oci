@@ -13,9 +13,9 @@ module "vcn"{
   nat_gateway_route_rules = null
 
   # Optional Inputs
-  vcn_name = "vcn-terraform"
-  vcn_dns_label = "vcnterraform"
-  vcn_cidrs = ["10.3.0.0/16"]
+  vcn_name = "vcn-minecraft"
+  vcn_dns_label = "vcnminecraft"
+  vcn_cidrs = ["10.4.0.0/16"]
   
   create_internet_gateway = true
   create_nat_gateway = true

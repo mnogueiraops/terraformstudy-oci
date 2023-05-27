@@ -8,56 +8,39 @@ resource "oci_core_security_list" "public-security-list"{
 
 # Optional
   display_name = "security-list-for-public-subnet"
-}
+
 
 #Output rules
 egress_security_rules {
-        #Required
-        destination = var.security_list_egress_security_rules_destination
-        protocol = var.security_list_egress_security_rules_protocol
+      stateless = false
+      destination = "0.0.0.0/0"
+      destination_type = "CIDR_BLOCK"
+      protocol = "all" 
+}
 
-        #Optional
-        description = var.security_list_egress_security_rules_description
-        destination_type = var.security_list_egress_security_rules_destination_type
-        icmp_options {
-            #Required
-            type = var.security_list_egress_security_rules_icmp_options_type
-
-            #Optional
-            code = var.security_list_egress_security_rules_icmp_options_code
-        }
-        stateless = var.security_list_egress_security_rules_stateless
-        tcp_options {
-
-            #Optional
-            max = var.security_list_egress_security_rules_tcp_options_destination_port_range_max
-            min = var.security_list_egress_security_rules_tcp_options_destination_port_range_min
-            source_port_range {
-                #Required
-                max = var.security_list_egress_security_rules_tcp_options_source_port_range_max
-                min = var.security_list_egress_security_rules_tcp_options_source_port_range_min
-            }
-            
     #Input rules
-      
-      
-      ingress_security_rules {
-        #Required
-        protocol = var.security_list_ingress_security_rules_protocol
-        source = var.security_list_ingress_security_rules_source
 
-        #Optional
-        description = var.security_list_ingress_security_rules_description
-        icmp_options {
-            #Required
-            type = var.security_list_ingress_security_rules_icmp_options_type
+      ingress_security_rules { 
+      stateless = false
+      source = "0.0.0.0/0"
+      source_type = "CIDR_BLOCK"
+      # Get protocol numbers from https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml TCP is 6
+      protocol = "6" 
+      tcp_options { 
+          min = 22
+          max = 22
+      } 
+      }
 
-            #Optional
-            code = var.security_list_ingress_security_rules_icmp_options_code
-        }
-        source_type = var.security_list_ingress_security_rules_source_type
-        stateless = var.security_list_ingress_security_rules_stateless
-       
-
-
-        
+      ingress_security_rules { 
+      stateless = false
+      source = "0.0.0.0/0"
+      source_type = "CIDR_BLOCK"
+      # Get protocol numbers from https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml TCP is 6
+      protocol = "6"
+      tcp_options { 
+          min = 25565
+          max = 25565 
+          }
+      }
+      }
