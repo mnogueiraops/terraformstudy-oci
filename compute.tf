@@ -7,8 +7,8 @@ resource "oci_core_instance" "orlinux_instance" {
     shape_config {
 
         #Optional
-        memory_in_gbs = "4"
-        ocpus = "2"
+        memory_in_gbs = "9"
+        ocpus = "3"
     }
 
     source_details {
